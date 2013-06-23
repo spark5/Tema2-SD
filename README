@@ -1,0 +1,18 @@
+/*
+ **Oncioiu Anamaria Raluca, 313 CA, Tema 1, Data: 04.04.2011
+ */
+ 	
+			
+	## Arhiva contine un fisier README cu detalii despre implementarea temei, fisierul sursa si un Makefile pentru compilarea temei.
+ 
+ 	Din fisierele ce contin cuvinte definite si termenii din definitia lor, se aloca dinamic un vector pentru cuvintele definite. La fiecare cuvant definit, se creeaza un vector cu termenii definitiei. Se calculeaza pentru fiecare termen, ponderea pe care o are in definitie si se insereaza in skiplist-ul asociat cuvantului definit.
+ 	
+ 	Fiecare skiplist este un pointer la un struct SK, ce contine un pointer la un struct nod reprezentand capul skiplist-ului si nivelul skiplist-ului. Un nod contine o cheie, adica un termen definit, ponderea pentru termenul definit si un vector de pointeri la noduri. Lungimea acestui vector da nivelul nodului din skiplist. Nivelul este obtinut cu functia SK_level, care incrementeaza nivelul maxim din skiplist, cu probabilitate 1/2. Aceasta probabilitate se obtine prin verificarea conditiei daca un numar random este par. 
+ 	  
+	La inserarea unui nod, se cauta pozitia lui in skiplist, pentru a avea un skiplist gata sortat si pentru a evita duplicatele. Cautarea incepe de la nivelul maxim si se opreste pana la un element cu cheia mai mica decat a celui cautat, dupa care se continua pe nivelul imediat urmator. 
+ 	
+ 	Pentru fiecare ghicitoare se aloca dinamic un vector, pentru a retine cuvintele ce o compun. Se parcurg toate skiplist-urile si se cauta cuvintele din ghicitoare. Daca skiplist-ul in care s-a cautat are toate cuvintele din ghicitoare, atunci cuvantul asociat skiplist-ului se copiaza intr-un vector alocat dinamic. 
+ 	
+ 	In cazul in care vectorul nu contine nici un cuvant (adica nu exista solutie pentru ghicitoare), se scrie un mesaj corespunzator. Altfel, se scriu cuvintele-solutie pentru ghicitoare, sortate in functie de ponderea totala. In caz de egalitate, se sorteaza lexicografic. Intrucat nu exista diferente mari intre mergesort si quicksort, in ceea ce priveste timpul, s-a folosit mergesort cu functie comparator.     
+ 	
+ 	
